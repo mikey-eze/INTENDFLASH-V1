@@ -1,10 +1,13 @@
 # ⚡ INTENDFLASH V1 — AI Document Verification
 
-> Intelligent verification of college permission letters using OCR + vision AI.
+> **AI-assisted college permission-letter verification using OCR, vision AI, and evidence-based scoring.**
 
-INTENDFLASH combines **PaddleOCR** for fast text extraction with **Ollama Gemma 3 Vision** for higher-level document interpretation. The system is designed to verify important fields and supporting document evidence without pretending that uncertain results are genuine.
+[![AI](https://img.shields.io/badge/AI-PaddleOCR%20%2B%20Gemma%203%20Vision-blue)](https://github.com/mikey-eze/INTENDFLASH-V1)
+[![Version](https://img.shields.io/badge/version-V1-green)](https://github.com/mikey-eze/INTENDFLASH-V1)
 
-## ✨ How Verification Works
+INTENDFLASH combines **PaddleOCR** for text extraction with **Ollama + Gemma 3 Vision** for higher-level document interpretation. The system focuses on evidence-based verification and human review rather than treating uncertain AI output as truth.
+
+## ✨ Verification Pipeline
 
 ```text
 📄 Permission Letter
@@ -30,8 +33,6 @@ INTENDFLASH combines **PaddleOCR** for fast text extraction with **Ollama Gemma 
 | Authority signature / approval | 15 |
 | Permission write-up present | 15 |
 
-These five checks are the core of the verification decision.
-
 ### Secondary checks — 15 points
 
 - NCC context — 3
@@ -40,14 +41,14 @@ These five checks are the core of the verification decision.
 - Authority details — 2
 - Overall reference-format consistency — 4
 
-The full genuine NCC letter is used as a **format and document-structure reference**. A supplied signature image is used only as supporting signature evidence; the system does not claim to establish handwriting identity from it.
+The reference letter is used for document structure and formatting context. Signature imagery is treated only as supporting evidence; the system does not claim to establish handwriting identity from it.
 
-## 🤖 AI Pipeline
+## 🤖 AI Stack
 
-- **PaddleOCR** — fast document text extraction
-- **Ollama + Gemma 3 Vision** — document understanding and interpretation
+- **PaddleOCR** — document text extraction
+- **Ollama + Gemma 3 Vision** — document understanding
 - **Evidence-based scoring** — separates primary verification from supporting signals
-- **Fail-safe behavior** — if required AI components are unavailable, the system reports `AI UNAVAILABLE — REVIEW REQUIRED` instead of fabricating a verification result
+- **Fail-safe behavior** — unavailable AI results in `AI UNAVAILABLE — REVIEW REQUIRED` rather than a fabricated decision
 
 ## 📧 Email Gate
 
@@ -55,7 +56,7 @@ A lecturer email is sent only when **all five primary checks pass (5/5)**:
 
 `Name` → `Roll Number` → `Event/Activity` → `Authority Approval` → `Permission Write-up`
 
-If any primary check fails, the submission is stored for review and no lecturer email is sent.
+If a primary check fails, the submission is stored for review and no lecturer email is sent.
 
 ## 🛡️ Design Principles
 
@@ -72,4 +73,4 @@ If any primary check fails, the submission is stored for review and no lecturer 
 
 ---
 
-Built to make document verification faster, clearer, and more accountable. ⚡
+Built to make document verification **faster, clearer, and more accountable.** ⚡
